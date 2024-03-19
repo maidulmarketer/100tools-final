@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* static variables */
+    --color-blue: 28 19 60;
+    --color-darkTwo: 49 51 67;
+    --color-dark: 22 22 24;
+    --color-light: 255 255 255;
+    --color-gradient: linear-gradient(
+      93.5deg,
+      #ae92ff 28.76%,
+      #dc90ff 28.77%,
+      #7341ff 87.9%,
+      #3900dc 99.93%,
+    );
+
+    /* dynamic variables */
+    --color-theme: var(--color-light);
+    --color-theme-opposite: var(--color-darkTwo);
+    --color-success: 80 178 64;
+    --color-warning: 255 150 91;
+    --color-semi-warning: 233 211 15;
+    --color-danger: 209 91 91;
+  }
+
+  :root[class="dark"] {
+    /* dynamic variables */
+    --color-theme: var(--color-darkTwo);
+    --color-theme-opposite: var(--color-light);   
+    --color-success: 126 254 171;
+    --color-warning: 248 141 17;
+    --color-semi-warning: 229 232 88;
+    --color-danger: 255 86 86;
+  }
+  
+  .override-style {
+    @apply space-y-4;
+  }
+  .override-style h1 {
+    @apply text-xl font-semibold;
+  }
+  .override-style ul {
+    @apply pl-4 list-disc list-inside;
+  }
+  .override-style ol {
+    @apply pl-4 list-decimal list-inside;
+  }
+  .override-style a {
+    @apply text-blue-500 underline;
+  }
+  .override-style img {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply pr-1 text-transparent w-fit bg-brand-gradient bg-clip-text;
+  }
+
+  .bg-radials {
+    background: radial-gradient(
+        circle max(20vw, 240px) at 40% 240px,
+        #f582ff30,
+        #0000
+      ),
+      radial-gradient(circle max(20vw, 240px) at 60% 160px, #2129f530, #0000);
+  }
+
+  .custom-scrollbar {
+    @apply [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-odtheme/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-odtheme/40;
+  }
+}
