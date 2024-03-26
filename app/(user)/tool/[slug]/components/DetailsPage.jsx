@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,7 +44,7 @@ import {
   Star,
   UserPlus,
 } from "@/components/svg/icons";
-import { useEffect } from "react";
+
 
 export default function DetailsPage({ params }) {
   const { status } = useSession();
@@ -59,6 +60,21 @@ export default function DetailsPage({ params }) {
     queryKey: [`tool/${params.slug}`],
     queryFn: () => getUserToolDetails(params.slug).then((res) => res.data),
   });
+
+  useEffect(() => {
+    if (tool) {
+      // Retrieve storedToolsArray from localStorage
+      const storedToolsArray =
+        JSON.parse(localStorage.getItem("storedTools")) || [];
+      const existingToolIndex = storedToolsArray.findIndex(
+        (t) => t.slug === tool.slug
+      )
+      if (existingToolIndex === -1) {
+        const updatedToolsArray = [...storedToolsArray, tool];
+        localStorage.setItem("storedTools", JSON.stringify(updatedToolsArray));
+      }
+    }
+  }, [tool]);
 
   if (isLoading) {
     return <ToolsDetails />;
@@ -100,21 +116,6 @@ export default function DetailsPage({ params }) {
         .catch((error) => console.log("Error sharing", error));
     }
   };
-
-  useEffect(() => {
-    if (tool) {
-      // Retrieve storedToolsArray from localStorage
-      const storedToolsArray =
-        JSON.parse(localStorage.getItem("storedTools")) || [];
-      const existingToolIndex = storedToolsArray.findIndex(
-        (t) => t.slug === tool.slug
-      )
-      if (existingToolIndex === -1) {
-        const updatedToolsArray = [...storedToolsArray, tool];
-        localStorage.setItem("storedTools", JSON.stringify(updatedToolsArray));
-      }
-    }
-  }, [tool]);
 
   return (
     <>

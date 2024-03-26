@@ -95,7 +95,7 @@ export function GlobalSearch({ onClose, setIsSearchModalOpen }) {
               <p className="rounded-full border-2 border-odtheme/70 p-2">
                 <Search className="w-3 h-3" />
               </p>
-              <p>See all results for "{searchValue}"</p>
+              <p>See all results for {searchValue} </p>
             </div>
           )}
           <div className="flex flex-col">

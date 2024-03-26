@@ -140,7 +140,7 @@ export default function ToolCard({ tool, refetch }) {
             Sign in to continue (100% free)
           </h2>
           <p className="text-base font-medium text-center text-odtheme/75">
-            To prevent spam, some actions require being signed in. It's free and
+            To prevent spam, some actions require being signed in. It is free and
             takes a few seconds.
           </p>
           <Button className="bg-odtheme text-dtheme">
