@@ -8,10 +8,11 @@ export default function Input({
   error,
   backendError,
   className,
+  mainDiv,
   ...restProps
 }) {
   return (
-    <div className="flex flex-col w-full form-group">
+    <div className={cn("flex flex-col w-full form-group", mainDiv)}>
       <label htmlFor={label} className="font-semibold">
         {label}
       </label>

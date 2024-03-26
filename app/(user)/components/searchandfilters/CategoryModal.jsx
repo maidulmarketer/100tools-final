@@ -7,34 +7,11 @@ import { getFeatures } from "@/services/admin/featureService";
 import { getCategories } from "@/services/admin/categoryService";
 
 import Button from "@/components/buttons/Button";
-import filterIcon from "../../../../public/images/icons/filter.svg";
-import darkFilterIcon from "../../../../public/images/icons/darkFilter.svg";
 import { RxCross2 } from "react-icons/rx";
 import Badge from "@/components/badges/Badge";
 import { useTheme } from "next-themes";
+import { Filter } from "@/components/svg/icons";
 
-const pricingOptions = [
-  { title: "Free", slug: "free" },
-  { title: "Free Trial", slug: "free_trial" },
-  { title: "Freemium", slug: "freemium" },
-  { title: "Premium", slug: "premium" },
-  { title: "Free", slug: "free" },
-  { title: "Free Trial", slug: "free_trial" },
-  { title: "Freemium", slug: "freemium" },
-  { title: "Premium", slug: "premium" },
-  { title: "Free", slug: "free" },
-  { title: "Free Trial", slug: "free_trial" },
-  { title: "Freemium", slug: "freemium" },
-  { title: "Premium", slug: "premium" },
-  { title: "Free", slug: "free" },
-  { title: "Free Trial", slug: "free_trial" },
-  { title: "Freemium", slug: "freemium" },
-  { title: "Premium", slug: "premium" },
-  { title: "Free", slug: "free" },
-  { title: "Free Trial", slug: "free_trial" },
-  { title: "Freemium", slug: "freemium" },
-  { title: "Premium", slug: "premium" },
-];
 
 export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
   const { replace } = useRouter();
@@ -87,7 +64,7 @@ export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
   };
 
   return (
-    <div className="relative h-full space-y-4">
+    <div className="relative space-y-4">
       <section className="flex items-center justify-between px-5 py-4">
         {checkedCategory.length > 0 ? (
           <div
@@ -97,14 +74,8 @@ export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
             <RxCross2 className="w-4 h-4" /> Clear All
           </div>
         ) : (
-          <div className="flex items-end  justify-start gap-1 font-medium text-xl leading-6">
-            <Image
-              src={theme==="dark" ? darkFilterIcon : filterIcon}
-              alt="filter-img"
-              width={24}
-              height={24}
-              className="w-6 h-6"
-            />
+          <div className="flex items-end  justify-start gap-2 font-medium text-xl leading-6">
+            <Filter className="w-6 h-6"/>
             <p className="block md:hidden">Filters</p>
             <p className="hidden md:block">Category</p>
           </div>
@@ -137,10 +108,8 @@ export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
       </div>
 
       {/* main body  */}
-      <section className="space-y-5 overflow-y-auto text-odtheme h-3/4 lg:h-[360px] md:h-96 px-5 py-3">
-        <div className="block md:flex flex-col md:flex-row items-start justify-start gap-2 sm:gap-36">
-          {/* category */}
-          <div
+      <section className="space-y-5 overflow-y-auto text-odtheme h-3/4 lg:h-[360px] md:h-96 pb-24 px-5 py-3">
+      <div
             className={`${
               activeOption === "category" ? "flex" : "hidden"
             } flex-col gap-6`}
@@ -149,7 +118,7 @@ export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
               <div key={item.slug} className="space-y-6">
                 <p className="font-bold"> {item.title}</p>
 
-                <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {item.subcategory.length ? (
                     item.subcategory.map((item) => (
                       <label
@@ -178,10 +147,9 @@ export default function CategoryModal({ isModalOpen, setIsModalOpen }) {
               </div>
             ))}
           </div>
-        </div>
       </section>
 
-      <section className="flex justify-center gap-2.5 absolute bottom-0 w-full p-4">
+      <section className="flex justify-center gap-2.5 absolute bottom-0 w-full p-4 bg-dtheme">
         <Button
           onClick={() => setIsModalOpen(!isModalOpen)}
           className="justify-center w-full"

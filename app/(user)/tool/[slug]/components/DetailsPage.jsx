@@ -30,14 +30,10 @@ import ToolsVerification from "./ToolsVerification";
 import ToolCard from "@/components/cards/ToolCard";
 
 import { IoLogoGithub } from "react-icons/io";
-import { CiBookmark } from "react-icons/ci";
 import instagram from "@/public/images/icons/instagram.png";
 import imagePlaceHolder from "@/public/images/image-placeholder.webp";
-
 import dot from "../../../../../public/images/icons/dot.svg";
-import fire from "../../../../../public/images/icons/fire.svg";
-import calender from "../../../../../public/images/icons/calender.svg";
-import person from "../../../../../public/images/icons/person.svg";
+
 import {
   BookMark,
   Calender,
@@ -47,6 +43,7 @@ import {
   Star,
   UserPlus,
 } from "@/components/svg/icons";
+import { useEffect } from "react";
 
 export default function DetailsPage({ params }) {
   const { status } = useSession();
@@ -103,6 +100,21 @@ export default function DetailsPage({ params }) {
         .catch((error) => console.log("Error sharing", error));
     }
   };
+
+  useEffect(() => {
+    if (tool) {
+      // Retrieve storedToolsArray from localStorage
+      const storedToolsArray =
+        JSON.parse(localStorage.getItem("storedTools")) || [];
+      const existingToolIndex = storedToolsArray.findIndex(
+        (t) => t.slug === tool.slug
+      )
+      if (existingToolIndex === -1) {
+        const updatedToolsArray = [...storedToolsArray, tool];
+        localStorage.setItem("storedTools", JSON.stringify(updatedToolsArray));
+      }
+    }
+  }, [tool]);
 
   return (
     <>

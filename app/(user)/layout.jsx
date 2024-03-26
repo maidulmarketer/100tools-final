@@ -41,9 +41,9 @@ export default function Layout({ children }) {
       <UserAuthSetter>
         <UserNavbar />
         <div className="flex flex-col justify-between min-h-screen mt-[314px] md:mt-[422px] bg-dtheme sticky top-0 z-10 border-t border-odtheme/25">
-        <main>{children}</main>
-        <UserMobileNav />
-        <Footer />
+          <main>{children}</main>
+          <UserMobileNav />
+          <Footer />
         </div>
       </UserAuthSetter>
     </UserSessionProvider>

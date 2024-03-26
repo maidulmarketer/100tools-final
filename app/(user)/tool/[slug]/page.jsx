@@ -4,7 +4,6 @@ import DetailsPage from "./components/DetailsPage";
 import { getUserToolDetails } from "@/services/user/toolsService";
 import { Hydrate, dehydrate } from "@tanstack/react-query";
 import Breadcrumb from "@/components/breadcrumbs/Breadcrumb";
-import Banner from "../../components/Banner";
 
 export default async function ToolDetailsPage({ params }) {
   const queryClient = getQueryClient();

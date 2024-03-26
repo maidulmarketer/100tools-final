@@ -22,13 +22,6 @@ import Select from "@/components/forms/Select";
 import Image from "next/image";
 import RichTextEditor from "@/components/forms/RichTextEditor";
 
-const pricingOptions = [
-  { label: "Free", value: "FREE" },
-  { label: "Freemium", value: "FREEMIUM" },
-  { label: "Free Trial", value: "FREE_TRIAL" },
-  { label: "Premium", value: "PREMIUM" },
-  { label: "Contact for Price", value: "CONTACT_FOR_PRICE" },
-];
 
 const schema = object().shape({
   name: string().required("Name is required"),
@@ -252,12 +245,12 @@ export default function AdminToolCreationPage() {
         </div>
 
         <div className="flex flex-col md:flex-row gap-2">
-          <Select
+          <Input
             register={{ ...register("pricing") }}
-            options={pricingOptions}
             error={errors.pricing}
             backendError={backendErrors.pricing}
-            label="Pricing"
+            label="Enter Your Price"
+            placeholder="Enter price"
           />
           <Input
             register={{ ...register("pricing_url") }}

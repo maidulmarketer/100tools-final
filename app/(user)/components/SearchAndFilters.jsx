@@ -82,7 +82,7 @@ export default function SearchAndFilter({ categorySlug }) {
   });
 
   return (
-    <div className="flex flex-col justify-center gap-6 pt-7 sticky top-0 z-20 bg-dtheme">
+    <div className="flex flex-col justify-center gap-6 pt-3 sticky top-0 z-20 bg-dtheme">
 
       <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
         <FilterByBadge

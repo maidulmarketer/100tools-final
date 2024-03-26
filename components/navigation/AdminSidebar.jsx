@@ -13,6 +13,7 @@ import { MdOutlineFeaturedVideo, MdOutlineFindInPage, MdOutlineVerified } from "
 import { TbUserShield } from "react-icons/tb";
 
 import Brand from "@/components/navigation/Brand";
+import { CiSettings } from "react-icons/ci";
 
 export default function AdminSidebar({ sidebarOpen, setSidebarOpen }) {
   const pathname = usePathname();
@@ -188,6 +189,18 @@ export default function AdminSidebar({ sidebarOpen, setSidebarOpen }) {
               >
                 <VscFeedback />
                 Blogs
+              </Link>
+            </li>
+            
+            <li>
+              <Link
+                href="/admin/sponsor"
+                className={`group relative flex items-center gap-2.5 rounded py-2 px-4 font-medium duration-300 ease-in-out hover:bg-odtheme/5 ${
+                  pathname.includes("/admin/sponsor") && "bg-odtheme/10"
+                }`}
+              >
+                <CiSettings/>
+                Settings
               </Link>
             </li>
 

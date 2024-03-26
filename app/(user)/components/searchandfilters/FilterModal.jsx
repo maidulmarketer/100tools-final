@@ -9,6 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 import { getFeatures } from "@/services/admin/featureService";
 import Badge from "@/components/badges/Badge";
 import { getCategories } from "@/services/admin/categoryService";
+import { Filter } from "@/components/svg/icons";
 
 const pricingOptions = [
   { title: "Free", slug: "free" },
@@ -139,7 +140,7 @@ export default function FilterModal({
           </div>
         ) : (
           <div className="flex items-center justify-start gap-1 font-semibold">
-            <BiSolidDashboard className="w-5 h-5 text-primary-400" />
+            <Filter className="w-6 h-6" />
             <p>Filters</p>
           </div>
         )}
@@ -169,7 +170,7 @@ export default function FilterModal({
           </div>
         ) : (
           <div className="flex items-center justify-start gap-1 font-semibold">
-            <BiSolidDashboard className="w-5 h-5 text-primary-400" />
+            <Filter className="w-6 h-6" />
             <p>Filters</p>
           </div>
         )}

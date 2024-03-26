@@ -65,7 +65,7 @@ export default function MobileNav({isMobileNavOpen, setIsMobileNavOpen}) {
           "fixed transition-all mb-[60px] bg-dtheme md:mb-0",
           isMobileNavOpen
             ? "inset-0 top-[66px] opacity-100 z-[99]"
-            : "top-0 right-0 left-full bottom-full overflow-hidden opacity-0"
+            : "top-0 left-0 right-full bottom-full overflow-hidden opacity-0"
         )}
       >
         <Container className="py-0 z-50">

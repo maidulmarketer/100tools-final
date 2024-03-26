@@ -1,10 +1,16 @@
 import { userApi } from "../axios";
 import { contentTypeHeader } from "../configs";
 
+
+export async function getPoweredBy() {
+  return await userApi.get("/sponsors");
+}
+export async function postSponsor(payload) {
+  return await userApi.post("/sponsors", payload);
+}
 export async function getUserTools(params) {
   return await userApi.get("/me/tools", { params });
 }
-
 export async function getCategoryTools(subCategory_slug, params) {
   return await userApi.get(`/me/tools/subcategory/${subCategory_slug}`, { params });
 }
